@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aşkımmmmaaa 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* KİLİT */
+#kilit {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.kilit-kutu {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 85%;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.kilit-kutu h2 {
+    color: #ff4d6d;
+}
+
+input {
+    margin-top: 15px;
+    padding: 12px;
+    width: 90%;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+button {
+    margin-top: 15px;
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* ANA */
+#icerik {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.kart {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #ff4d6d;
+    font-size: 22px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* KALP */
+.kalp {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: yuksel 6s linear forwards;
+}
+
+@keyframes yuksel {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- KİLİT -->
+<div id="kilit">
+    <div class="kilit-kutu">
+        <h2>🔒 Kilitli</h2>
+        <p id="uyari">Bu sayfa sadece Yusuf için 💙</p>
+        <input type="password" id="sifre" placeholder="Şifreyi gir">
+        <button onclick="kilidiAc()">Aç 💕</button>
+    </div>
+</div>
+
+<!-- İÇERİK -->
+<div id="icerik">
+    <div class="kart">
+        <h1>Aşkımmmm 🤍</h1>
+        <p>
+            Yusuf,<br><br>
+            Bunu okurken belki farkında değilsin ama bu satırların her biri
+            seni düşündüğüm anlardan çıktı.<br><br>
+            Her zaman duygularımı anlatabilen biri değilim ama bilmeni isterim ki
+            sen benim için çok kıymetlisin. Bazen söyleyemesem de,
+            her detayda seni seçiyorum.<br><br>
+            Hayatımda olduğun için, bana hissettirdiklerin için,
+            olduğun kişi için teşekkür ederim.
+            Seni çookkkkk sseviyorummmmmm iyi ki varsın… 💙
+        </p>
+        <button onclick="herSey()">Kalbimden 💕</button>
+    </div>
+</div>
+
+<audio id="muzik" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const dogruSifre = "seni seviyorum"; // 🔑
+
+let deneme = 0;
+
+function kilidiAc() {
+    const girilen = document.getElementById("sifre").value;
+    const uyari = document.getElementById("uyari");
+
+    if (girilen === dogruSifre) {
+        document.getElementById("kilit").style.display = "none";
+        document.getElementById("icerik").style.display = "flex";
+    } else {
+        deneme++;
+        if (deneme === 1) uyari.innerText = "İpucu: Seninle alakalı bişey";
+        else if (deneme === 2) uyari.innerText = "Biraz daha düşün…";
+        else uyari.innerText = "Tamam tamam 😅 acele etme, doğru gelecek";
+    }
+}
+
+function kalpOlustur() {
+    const kalp = document.createElement("div");
+    kalp.classList.add("kalp");
+    kalp.innerText = "💗🤍💖";
+    kalp.style.left = Math.random() * 100 + "vw";
+    kalp.style.fontSize = (15 + Math.random() * 20) + "px";
+    document.body.appendChild(kalp);
+    setTimeout(() => kalp.remove(), 6000);
+}
+
+function herSey() {
+    document.getElementById("muzik").play();
+    setInterval(kalpOlustur, 400);
+}
+</script>
+
+</body>
+</html>
